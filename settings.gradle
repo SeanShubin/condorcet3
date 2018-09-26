@@ -1,0 +1,9 @@
+rootProject.name = "condorcet"
+
+include ":js-app"
+include ":jvm-app"
+include ":js-frontend"
+include ":jvm-backend"
+include ":common-frontend"
+include ":common-backend"
+include ":common-generic"

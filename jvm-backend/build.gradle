@@ -1,0 +1,18 @@
+apply plugin: "kotlin-platform-jvm"
+
+archivesBaseName = "condorcet-jvm-backend"
+
+dependencies {
+    expectedBy project(":common-backend")
+    compile libraries.kotlin_stdlib
+    testCompile libraries.kotlin_test_junit
+}
+
+task sourcesJar(type: Jar) {
+    classifier = "sources"
+    from sourceSets.main.kotlin
+}
+
+artifacts {
+    archives sourcesJar
+}

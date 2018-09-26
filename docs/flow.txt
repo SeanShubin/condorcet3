@@ -1,0 +1,64 @@
+/*
+login
+    email
+    password
+register
+    email
+    password
+    confirm-password
+elections
+    list of election names
+voters
+    list of voters
+election
+    is open
+    list of voters (valid for that election)
+    list of candidates
+ballot
+    voter
+    election
+    list of ranked candidates
+tally
+your-ballots
+    list of ballots (yours, for open election)
+
+## Events
+
+### Guest
+- register(email, password)
+
+### User
+create-election(electionName)
+
+### Election Creator
+- add-voter(electionName, voter)
+- remove-voter(electionName, voter)
+
+### Admin
+
+add-candidate(electionName, candidate)
+remove-candidate(electionName, candidate)
+open-election(electionName)
+close-election(electionName)
+
+*/
+
+digraph flow {
+  "login";
+  "register";
+  "elections";
+  "election";
+  "ballot";
+  "tally";
+  "voters";
+  "your-ballots";
+  "election-voters"
+  "login" -> "register";
+  "login" -> "elections";
+  "register" -> "elections";
+  "elections" -> "election";
+  "elections" -> "ballot";
+  "elections" -> "tally";
+  "election" -> "ballot";
+  "ballot" -> "tally";
+}
