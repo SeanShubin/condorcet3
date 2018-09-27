@@ -83,50 +83,29 @@ fun HtmlBlockTag.renderRanking(ranking: Ranking) {
 
 fun HtmlBlockTag.login() {
     myFieldSet("Login") {
-        p {
-            +"successful login goes to electionList page"
-        }
-        p {
-            +"unsuccessful login stays on login page"
-        }
-        p {
-            +"link to register page"
-        }
         myInput("EMail")
         myPassword("Password")
         myButton("Login")
+        a(href = "") {
+            +"Register"
+        }
     }
 }
 
 fun HtmlBlockTag.register() {
     myFieldSet("Register") {
-        p {
-            +"successful register goes to electionList page"
-        }
-        p {
-            +"unsuccessful register stays on register page"
-        }
-        p {
-            +"link to login page"
-        }
         myInput("EMail")
         myPassword("Password")
         myPassword("Confirm Password")
         myButton("Register")
+        a(href = "") {
+            +"Login"
+        }
     }
 }
 
-fun HtmlBlockTag.elections(electionNames:List<String>) {
+fun HtmlBlockTag.elections(electionNames: List<String>) {
     myFieldSet("Elections") {
-        p {
-            +"add election goes to create election page"
-        }
-        p {
-            +"link to each election goes to election page"
-        }
-        p {
-            +"logout returns to login page"
-        }
         ul {
             for (electionName in electionNames) {
                 li {
@@ -143,33 +122,37 @@ fun HtmlBlockTag.elections(electionNames:List<String>) {
 
 fun HtmlBlockTag.createElection() {
     myFieldSet("Create Election") {
-        p {
-            +"create election goes to election page"
-        }
-        p {
-            +"link to elections page"
-        }
         myInput("Election Name")
-        candidateEditor()
-    }
-}
-
-fun HtmlBlockTag.election(name: String, rankings: List<Ranking>) {
-    myFieldSet(name) {
-        for (ranking in rankings) {
-            renderRanking(ranking)
-        }
-        myButton("Apply Rankings")
-    }
-}
-
-fun HtmlBlockTag.candidateEditor() {
-    myFieldSet("Candidates") {
         divLabel("Candidate Names")
         div {
             textArea {}
         }
-        myButton("Update")
+        divLabel("Applicable Voters")
+        div {
+            textArea {}
+        }
+        myButton("Create Election")
+        myButton("Logout")
+    }
+}
+
+fun HtmlBlockTag.election(name: String) {
+    myFieldSet(name) {
+        myButton("Cast Ballot")
+        myButton("Tally")
+        myButton("Mark for Delete")
+        myButton("Logout")
+    }
+}
+
+fun HtmlBlockTag.ballot(name: String, rankings: List<Ranking>) {
+    myFieldSet("Ballot for $name") {
+        for (ranking in rankings) {
+            renderRanking(ranking)
+        }
+        myButton("Apply Rankings")
+        myButton("Tally")
+        myButton("Logout")
     }
 }
 
@@ -178,7 +161,8 @@ fun main(arguments: Array<String>) {
         login()
         register()
         elections(SampleData.electionNames)
-        election(SampleData.election1, SampleData.rankings)
+        election(SampleData.election1)
+        ballot(SampleData.election1, SampleData.rankings)
         createElection()
         displayInputLines()
         displayOutputLines()

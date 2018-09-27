@@ -92,6 +92,6 @@ fun matrixOfSizeWithGenerator(rowCount: Int, columnCount: Int, generate: (Int, I
 
 operator fun Matrix.plus(that: Matrix): Matrix {
     if (this.rowCount() != that.rowCount())
-        throw RuntimeException("Attempting to add a matrix with ${this.rowCount()} rows to matrix with ${that.rowCount()} rows")
+        throw RuntimeException("Attempting to create a matrix with ${this.rowCount()} rows to matrix with ${that.rowCount()} rows")
     return matrixOfSizeWithGenerator(this.rowCount(), this.columnCount(), { i, j -> this[i, j] + that[i, j] })
 }
