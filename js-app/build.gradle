@@ -1,7 +1,6 @@
 import com.google.javascript.jscomp.CompilerOptions
 
 apply plugin: "kotlin2js"
-apply plugin: "kotlin-dce-js"
 apply plugin: "com.eriwen.gradle.js"
 
 dependencies {
@@ -36,7 +35,6 @@ minifyJs {
     }
 }
 
-combineJs.dependsOn runDceKotlinJs
 build.dependsOn minifyJs
 
 task minifiedJar(type: Jar) {
