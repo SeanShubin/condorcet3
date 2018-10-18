@@ -11,3 +11,10 @@ task run(dependsOn: classes, type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     ignoreExitValue(true)
 }
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'com.seanshubin.condorcet.jvm.app.MainKt'
+    }
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}
