@@ -156,8 +156,13 @@ fun HtmlBlockTag.ballot(name: String, rankings: List<Ranking>) {
     }
 }
 
+fun HtmlBlockTag.debugInfo() {
+    p { +"url = ${document.URL}" }
+}
+
 fun main(arguments: Array<String>) {
     document.body!!.append.div() {
+        debugInfo()
         login()
         register()
         elections(SampleData.electionNames)
