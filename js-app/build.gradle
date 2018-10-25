@@ -1,7 +1,7 @@
 import com.google.javascript.jscomp.CompilerOptions
 
 apply plugin: "kotlin2js"
-apply plugin: 'kotlin-dce-js'
+apply plugin: "kotlin-dce-js"
 apply plugin: "com.eriwen.gradle.js"
 
 dependencies {
@@ -19,7 +19,7 @@ dependencies {
 combineJs {
     source = [
             "${buildDir}/kotlin-js-min/main/kotlin.js",
-            "${buildDir}/kotlin-js-min/main/condorcet-js-frontend.js",
+            "${buildDir}/kotlin-js-min/main/js-frontend.js",
             "${buildDir}/kotlin-js-min/main/js-app.js"
     ]
     dest = file("${temporaryDir}/${archivesBaseName}-combined.js")

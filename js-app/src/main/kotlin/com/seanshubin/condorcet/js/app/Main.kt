@@ -1,32 +1,10 @@
 package com.seanshubin.condorcet.js.app
 
-import com.seanshubin.condorcet.common.backend.Condorcet
 import com.seanshubin.condorcet.js.frontend.Ranking
 import com.seanshubin.condorcet.js.frontend.SampleData
 import kotlinx.html.*
 import kotlinx.html.dom.append
 import kotlin.browser.document
-
-val inputLines = SampleData.sampleInput
-
-fun HtmlBlockTag.displayInputLines() {
-    h2 {
-        +"Input"
-    }
-    pre {
-        +inputLines.joinToString("\n")
-    }
-}
-
-fun HtmlBlockTag.displayOutputLines() {
-    val outputLines = Condorcet.processLines(inputLines)
-    h2 {
-        +"Output"
-    }
-    pre {
-        +outputLines.joinToString("\n")
-    }
-}
 
 fun HtmlBlockTag.myFieldSet(name: String, block: () -> Unit) {
     fieldSet {
@@ -169,7 +147,5 @@ fun main(arguments: Array<String>) {
         election(SampleData.election1)
         ballot(SampleData.election1, SampleData.rankings)
         createElection()
-        displayInputLines()
-        displayOutputLines()
     }
 }

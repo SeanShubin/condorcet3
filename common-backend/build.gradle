@@ -1,6 +1,6 @@
 apply plugin: "kotlin-platform-common"
 
-archivesBaseName = "condorcet-common-backend"
+archivesBaseName = "common-backend"
 
 dependencies {
     compile project(":common-generic")

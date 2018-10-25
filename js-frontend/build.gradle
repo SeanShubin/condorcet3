@@ -1,11 +1,11 @@
 apply plugin: "kotlin-platform-js"
 apply plugin: "com.moowork.node"
 
-archivesBaseName = "condorcet-js-frontend"
+archivesBaseName = "js-frontend"
 
 dependencies {
-    expectedBy project(':common-frontend')
-    expectedBy project(':common-backend')
+    expectedBy project(":common-generic")
+    expectedBy project(":common-frontend")
     compile libraries.kotlin_stdlib_js
     testCompile libraries.kotlin_test_js
 }
